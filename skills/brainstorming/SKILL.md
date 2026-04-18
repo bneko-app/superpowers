@@ -21,16 +21,17 @@ Every project goes through this process. A todo list, a single-function utility,
 
 You MUST create a task for each of these items and complete them in order:
 
-1. **Explore project context** — check files, docs, recent commits
+1. **Explore project context** — check files, docs, recent commits.
 2. **Offer visual companion** (if topic will involve visual questions) — this is its own message, not combined with a clarifying question. See the Visual Companion section below.
-3. **Ask clarifying questions** — one at a time, understand purpose/constraints/success criteria
+3. **Ask clarifying questions** — one at a time, understand purpose/constraints/success criteria.
 4. **Present 2-3 approaches** — with trade-offs for each. Follow the `socratic-facilitation` skill at this and all subsequent decision points.
-5. **Present design** — in sections scaled to their complexity, get user approval after each section
-6. **Generate design rationale** — invoke `design-rationale` skill to produce the ADR document from decision data captured during the Socratic exploration
-7. **Write design doc** — save to `docs/superpowers/specs/YYYY-MM-DD-<topic>-design.md` and commit
-8. **Spec review loop** — dispatch spec-document-reviewer subagent with precisely crafted review context (never your session history); fix issues and re-dispatch until approved (max 3 iterations, then surface to human)
-9. **User reviews written spec** — ask user to review the spec file before proceeding
-10. **Transition to implementation** — invoke writing-plans skill to create implementation plan
+5. **Present design** — in sections scaled to their complexity, get user approval after each section.
+6. **Generate design rationale** — invoke `design-rationale` skill to produce the ADR document from decision data captured during the Socratic exploration.
+7. **Write design doc** — save to `docs/superpowers/specs/YYYY-MM-DD-<topic>-design.md` and commit.
+8. **Spec review loop** — dispatch spec-document-reviewer subagent with precisely crafted review context (never your session history); fix issues and re-dispatch until approved (max 3 iterations, then surface to human).
+9. **User reviews written spec** — ask user to review the spec file before proceeding.
+10. **Offer to write logbook** — ask user if they want to save the brainstorming session history, and if so invoke the `logbook` skill before proceeding to implementation.
+11. **Transition to implementation** — invoke writing-plans skill to create implementation plan.
 
 ## Process Flow
 
@@ -48,6 +49,7 @@ digraph brainstorming {
     "Spec review loop" [shape=box];
     "Spec review passed?" [shape=diamond];
     "User reviews spec?" [shape=diamond];
+    "Offer to write logbook" [shape=box];
     "Invoke writing-plans skill" [shape=doublecircle];
 
     "Explore project context" -> "Visual questions ahead?";
@@ -65,7 +67,8 @@ digraph brainstorming {
     "Spec review passed?" -> "Spec review loop" [label="issues found,\nfix and re-dispatch"];
     "Spec review passed?" -> "User reviews spec?" [label="approved"];
     "User reviews spec?" -> "Write design doc" [label="changes requested"];
-    "User reviews spec?" -> "Invoke writing-plans skill" [label="approved"];
+    "User reviews spec?" -> "Offer to write logbook" [label="approved"];
+    "Offer to write logbook" -> "Invoke writing-plans skill";
 }
 ```
 
@@ -167,3 +170,9 @@ A question about a UI topic is not automatically a visual question. "What does p
 
 If they agree to the companion, read the detailed guide before proceeding:
 `skills/brainstorming/visual-companion.md`
+
+## Logbook
+
+Use the `logbook` skill to save a complete record of the brainstorming session history, including all questions, answers, responses, and interactions. This is optional but encouraged for all but the most trivial projects.
+Whenever the context is about to be cleared or compacted, or is reaching maximum capacity, offer to save a logbook to preserve the full history of the exploration.
+See the `logbook` skill for details.

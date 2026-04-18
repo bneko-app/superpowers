@@ -16,6 +16,7 @@ Load plan, review critically, execute all tasks, report when complete.
 ## The Process
 
 ### Step 1: Load and Review Plan
+
 1. Read plan file
 2. Review critically - identify any questions or concerns about the plan
 3. If concerns: Raise them with your human partner before starting
@@ -24,6 +25,7 @@ Load plan, review critically, execute all tasks, report when complete.
 ### Step 2: Execute Tasks
 
 For each task:
+
 1. Mark as in_progress
 2. Follow each step exactly (plan has bite-sized steps)
 3. Run verifications as specified
@@ -32,6 +34,7 @@ For each task:
 ### Step 3: Complete Development
 
 After all tasks complete and verified:
+
 - Announce: "I'm using the finishing-a-development-branch skill to complete this work."
 - **REQUIRED SUB-SKILL:** Use superpowers:finishing-a-development-branch
 - Follow that skill to verify tests, present options, execute choice
@@ -39,6 +42,7 @@ After all tasks complete and verified:
 ## When to Stop and Ask for Help
 
 **STOP executing immediately when:**
+
 - Hit a blocker (missing dependency, test fails, instruction unclear)
 - Plan has critical gaps preventing starting
 - You don't understand an instruction
@@ -46,15 +50,29 @@ After all tasks complete and verified:
 
 **Ask for clarification rather than guessing.**
 
+## Socratic Decision Points
+
+When a blocker requires a direction decision from the user that **diverges from the original plan** or involves a **significant design/architecture choice** not covered in the brainstorming phase, follow the `socratic-facilitation` skill to guide the decision. Present options neutrally, probe the user's justification, and do not recommend.
+
+**This does NOT apply to:**
+
+- Small implementation decisions (naming, utility choice, error message wording)
+- Decisions that follow directly from the plan
+- Technical troubleshooting within the plan's scope
+
+**Only activate for:** decisions that would change the plan's direction or introduce architectural choices that weren't previously explored.
+
 ## When to Revisit Earlier Steps
 
 **Return to Review (Step 1) when:**
+
 - Partner updates the plan based on your feedback
 - Fundamental approach needs rethinking
 
 **Don't force through blockers** - stop and ask.
 
 ## Remember
+
 - Review plan critically first
 - Follow plan steps exactly
 - Don't skip verifications
@@ -65,6 +83,8 @@ After all tasks complete and verified:
 ## Integration
 
 **Required workflow skills:**
+
 - **superpowers:using-git-worktrees** - REQUIRED: Set up isolated workspace before starting
 - **superpowers:writing-plans** - Creates the plan this skill executes
 - **superpowers:finishing-a-development-branch** - Complete development after all tasks
+- **superpowers:socratic-facilitation** - Follow at decision points that diverge from the plan

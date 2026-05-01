@@ -61,4 +61,4 @@ Organize the received data into these sections:
 - Invoked by brainstorming after the user reviewed written spec (before transitioning to implementation).
 - Also invocable standalone to generate a logbook document from any Socratic exploration.
 - Can be triggered by the user at any time to document a session, even if not part of the brainstorming process.
-- Should be triggered before the context reaches maximum capacity, or before compacting or clearing the context (`/compact`, `/clear`), to preserve the full context of the exploration.
+- Hooks will trigger on `SessionEnd` when reason is `clear` and on `PreCompact`, to preserve the full context of the exploration.

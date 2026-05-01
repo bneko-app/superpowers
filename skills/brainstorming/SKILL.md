@@ -30,8 +30,8 @@ You MUST create a task for each of these items and complete them in order:
 7. **Write design doc** — save to `docs/superpowers/specs/YYYY-MM-DD-<topic>-design.md` and commit.
 8. **Spec review loop** — dispatch spec-document-reviewer subagent with precisely crafted review context (never your session history); fix issues and re-dispatch until approved (max 3 iterations, then surface to human).
 9. **User reviews written spec** — ask user to review the spec file before proceeding.
-10. **Offer to write logbook** — ask user if they want to save the brainstorming session history, and if so invoke the `logbook` skill before proceeding to implementation.
-11. **Transition to implementation** — invoke writing-plans skill to create implementation plan.
+10. **Transition to implementation** — invoke writing-plans skill to create implementation plan.
+11. **Offer to write logbook** — ask user if they want to save the brainstorming session history, and if so invoke the `logbook` skill before proceeding to implementation.
 
 ## Process Flow
 
@@ -49,8 +49,8 @@ digraph brainstorming {
     "Spec review loop" [shape=box];
     "Spec review passed?" [shape=diamond];
     "User reviews spec?" [shape=diamond];
-    "Offer to write logbook" [shape=box];
-    "Invoke writing-plans skill" [shape=doublecircle];
+    "Invoke writing-plans skill" [shape=box];
+    "Offer to write logbook" [shape=doublecircle];
 
     "Explore project context" -> "Visual questions ahead?";
     "Visual questions ahead?" -> "Offer Visual Companion\n(own message, no other content)" [label="yes"];
@@ -67,8 +67,8 @@ digraph brainstorming {
     "Spec review passed?" -> "Spec review loop" [label="issues found,\nfix and re-dispatch"];
     "Spec review passed?" -> "User reviews spec?" [label="approved"];
     "User reviews spec?" -> "Write design doc" [label="changes requested"];
-    "User reviews spec?" -> "Offer to write logbook" [label="approved"];
-    "Offer to write logbook" -> "Invoke writing-plans skill";
+    "User reviews spec?" -> "Invoke writing-plans skill" [label="approved"];
+    "Invoke writing-plans skill" -> "Offer to write logbook";
 }
 ```
 

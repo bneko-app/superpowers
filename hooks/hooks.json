@@ -11,6 +11,31 @@
           }
         ]
       }
+    ],
+    "SessionEnd": [
+      {
+        "matcher": "clear",
+        "hooks": [
+          {
+            "type": "agent",
+            "prompt": "The session is being cleared. Invoke the superpowers:logbook skill now to save a logbook entry capturing the key explorations, decisions, and outcomes of this session before the context is cleared.",
+            "timeout": 120,
+            "statusMessage": "Saving logbook before clear..."
+          }
+        ]
+      }
+    ],
+    "PreCompact": [
+      {
+        "hooks": [
+          {
+            "type": "agent",
+            "prompt": "The conversation is about to be compacted. Invoke the superpowers:logbook skill now to save a logbook entry capturing the key explorations, decisions, and outcomes of this session before the context is compacted.",
+            "timeout": 120,
+            "statusMessage": "Saving logbook before compact..."
+          }
+        ]
+      }
     ]
   }
 }
